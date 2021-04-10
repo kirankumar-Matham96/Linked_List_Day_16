@@ -15,7 +15,7 @@ public class GenericLinkedListSimulatorTest {
     }
     
     @Test
-    public void givenThreeValuesToLinkedList_testShouldPass_whenReturnsProperOrder() {
+    public void givenThreeValuesToLinkedList_addsAtTheFront_testShouldPass() {
         Node<Integer> integerNode1 = new Node<Integer>(70);
         Node<Integer> integerNode2 = new Node<Integer>(56);
         Node<Integer> integerNode3 = new Node<Integer>(30);
@@ -27,5 +27,20 @@ public class GenericLinkedListSimulatorTest {
         Assert.assertTrue(LinkedList.getHead().equals(integerNode2) &&
                             LinkedList.getHead().getNext().equals(integerNode3) &&
                             LinkedList.getTail().equals(integerNode1));
+    }
+    
+    @Test
+    public void givenThreeValuesToLinkedList_addsAtTheLast_testShouldPass() {
+        Node<Integer> integerNode1 = new Node<Integer>(56);
+        Node<Integer> integerNode2 = new Node<Integer>(30);
+        Node<Integer> integerNode3 = new Node<Integer>(70);
+        LinkedList linkedList = new LinkedList();
+        linkedList.append(integerNode1);
+        linkedList.append(integerNode2);
+        linkedList.append(integerNode3);
+        linkedList.printNodes();
+        Assert.assertTrue(LinkedList.getHead().equals(integerNode1) &&
+                LinkedList.getHead().getNext().equals(integerNode2) &&
+                LinkedList.getTail().equals(integerNode3));
     }
 }

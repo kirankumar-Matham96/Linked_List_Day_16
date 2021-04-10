@@ -17,6 +17,10 @@ public class LinkedList {
         this.tail = null;
     }
     
+    /**
+     * Adds the element at front
+     * @param newNode
+     */
     public void add(INode newNode) {
         if(this.tail == null) {
             this.tail = newNode;
@@ -28,7 +32,23 @@ public class LinkedList {
             this.head = newNode;
             this.head.setNext(tempNode);
         }
-        
+    }
+    
+    /**
+     * Adds element at the end (append)
+     * @param newNode
+     */
+    public void append(INode newNode) {
+        if(this.head == null) {
+            this.head = newNode;
+        }
+        if(this.tail == null){
+            this.tail = newNode;
+        }else{
+            this.tail.setNext(newNode);
+            this.tail = newNode;
+            
+        }
     }
     
     public void printNodes(){
