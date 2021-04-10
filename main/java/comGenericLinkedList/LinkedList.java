@@ -73,6 +73,25 @@ public class LinkedList {
     }
     
     /**
+     * removes the first element from the list
+     */
+    public void pop() {
+        INode tempNode = this.head;
+        this.head = head.getNext();
+    }
+    
+    /**
+     * removes the last element from the list
+     */
+    public void popLast() {
+        INode tempNode = head;
+        while(!tempNode.getNext().equals(tail)){
+            tempNode = tempNode.getNext();
+        }
+        this.tail = tempNode;
+    }
+    
+    /**
      * Prints all the nodes in sequence
      */
     public void printNodes(){
@@ -87,13 +106,5 @@ public class LinkedList {
         }
         availableNodes.append(tempNode.getKey());
         System.out.println(availableNodes);
-    }
-    
-    /**
-     * removes the first element from the list
-     */
-    public void pop() {
-        INode tempNode = this.head;
-        this.head = head.getNext();
     }
 }
