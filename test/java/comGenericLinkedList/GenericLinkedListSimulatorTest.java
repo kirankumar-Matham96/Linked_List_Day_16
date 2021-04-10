@@ -9,8 +9,23 @@ public class GenericLinkedListSimulatorTest {
         Node<Integer> integerNode1 = new Node<Integer>(56);
         Node<Integer> integerNode2 = new Node<Integer>(30);
         Node<Integer> integerNode3 = new Node<Integer>(70);
-        integerNode1.next = integerNode2;
-        integerNode2.next = integerNode3;
-        Assert.assertTrue(integerNode1.next.equals(integerNode2) && integerNode2.next.equals(integerNode3));
+        integerNode1.setNext(integerNode2);
+        integerNode2.setNext(integerNode3);
+        Assert.assertTrue(integerNode1.getNext().equals(integerNode2) && integerNode2.getNext().equals(integerNode3));
+    }
+    
+    @Test
+    public void givenThreeValuesToLinkedList_testShouldPass_whenReturnsProperOrder() {
+        Node<Integer> integerNode1 = new Node<Integer>(70);
+        Node<Integer> integerNode2 = new Node<Integer>(56);
+        Node<Integer> integerNode3 = new Node<Integer>(30);
+        LinkedList linkedList = new LinkedList();
+        linkedList.add(integerNode1);
+        linkedList.add(integerNode3);
+        linkedList.add(integerNode2);
+        linkedList.printNodes();
+        Assert.assertTrue(LinkedList.getHead().equals(integerNode2) &&
+                            LinkedList.getHead().getNext().equals(integerNode3) &&
+                            LinkedList.getTail().equals(integerNode1));
     }
 }

@@ -5,18 +5,29 @@ package comGenericLinkedList;
  *
  * @param <L> generic type
  */
-public class Node<L> {
-    L key;
-    Node<L> next;
-    
-    public Node() {
-        this.key = null;
-        this.next = null;
-    }
+public class Node<L> implements INode<L> {
+    private L key;
+    private INode next;
     
     public Node(L key) {
         this.key = key;
         this.next = null;
+    }
+    
+    public L getKey() {
+        return key;
+    }
+    
+    public void setKey(L key) {
+        this.key = key;
+    }
+    
+    public INode getNext() {
+        return next;
+    }
+    
+    public void setNext(INode next) {
+        this.next = (Node<L>) next;
     }
     
     @Override
