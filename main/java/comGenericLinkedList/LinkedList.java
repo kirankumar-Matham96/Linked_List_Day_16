@@ -6,6 +6,7 @@ public class LinkedList {
     
     /**
      * gets head
+     *
      * @return
      */
     public static INode getHead() {
@@ -14,6 +15,7 @@ public class LinkedList {
     
     /**
      * gets tail
+     *
      * @return
      */
     public static INode getTail() {
@@ -30,15 +32,16 @@ public class LinkedList {
     
     /**
      * Adds the element at front
+     *
      * @param newNode new element
      */
     public void add(INode newNode) {
         if(this.tail == null) {
             this.tail = newNode;
         }
-        if(this.head == null){
+        if(this.head == null) {
             this.head = newNode;
-        }else{
+        } else {
             INode tempNode = this.head;
             this.head = newNode;
             this.head.setNext(tempNode);
@@ -47,15 +50,16 @@ public class LinkedList {
     
     /**
      * Adds element at the end (append)
+     *
      * @param newNode new element
      */
     public void append(INode newNode) {
         if(this.head == null) {
             this.head = newNode;
         }
-        if(this.tail == null){
+        if(this.tail == null) {
             this.tail = newNode;
-        }else{
+        } else {
             this.tail.setNext(newNode);
             this.tail = newNode;
         }
@@ -63,8 +67,9 @@ public class LinkedList {
     
     /**
      * adds element in between two existing nodes
+     *
      * @param previousNode node at which the new element to be added
-     * @param newNode new element
+     * @param newNode      new element
      */
     public void insert(INode previousNode, INode newNode) {
         INode tempNode = previousNode.getNext();
@@ -85,7 +90,7 @@ public class LinkedList {
      */
     public void popLast() {
         INode tempNode = head;
-        while(!tempNode.getNext().equals(tail)){
+        while(!tempNode.getNext().equals(tail)) {
             tempNode = tempNode.getNext();
         }
         this.tail = tempNode;
@@ -94,17 +99,39 @@ public class LinkedList {
     /**
      * Prints all the nodes in sequence
      */
-    public void printNodes(){
+    public void printNodes() {
         StringBuffer availableNodes = new StringBuffer("Nodes : ");
         INode tempNode = head;
-        while(tempNode.getNext() != null){
+        while(tempNode.getNext() != null) {
             availableNodes.append(tempNode.getKey());
-            if(!tempNode.equals(tail)){
+            if(!tempNode.equals(tail)) {
                 availableNodes.append(" points to ");
             }
             tempNode = tempNode.getNext();
         }
         availableNodes.append(tempNode.getKey());
         System.out.println(availableNodes);
+    }
+    
+    /**
+     * Searches value in the list
+     *
+     * @param keyValue value to search
+     * @return returns boolean
+     */
+    public boolean searchByValue(int keyValue) {
+        if(head == null) {
+            return false;
+        }
+        INode tempNode = head;
+        while(tempNode.getNext() != null) {
+            if(tempNode.getKey().equals(keyValue)) {
+                System.out.println("Found!");
+                return true;
+            }
+            tempNode = tempNode.getNext();
+        }
+        System.out.println("Not found!");
+        return false;
     }
 }

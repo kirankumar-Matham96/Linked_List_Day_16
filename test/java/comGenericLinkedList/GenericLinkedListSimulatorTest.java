@@ -77,4 +77,16 @@ public class GenericLinkedListSimulatorTest {
         linkedList.popLast();
         Assert.assertTrue(LinkedList.getHead().equals(integerNode1) && LinkedList.getTail().equals(integerNode2));
     }
+    
+    @Test
+    public void givenValueShouldBeSearchedInTheListAndReturnTheSame_ifExists() {
+        Node<Integer> integerNode1 = new Node<Integer>(56);
+        Node<Integer> integerNode2 = new Node<Integer>(30);
+        Node<Integer> integerNode3 = new Node<Integer>(70);
+        LinkedList linkedList = new LinkedList();
+        linkedList.append(integerNode1);
+        linkedList.append(integerNode2);
+        linkedList.append(integerNode3);
+        Assert.assertTrue(linkedList.searchByValue(30));
+    }
 }
