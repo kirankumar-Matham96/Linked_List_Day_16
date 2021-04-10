@@ -4,14 +4,25 @@ public class LinkedList {
     private static INode head;
     private static INode tail;
     
+    /**
+     * gets head
+     * @return
+     */
     public static INode getHead() {
         return head;
     }
     
+    /**
+     * gets tail
+     * @return
+     */
     public static INode getTail() {
         return tail;
     }
     
+    /**
+     * constructor to set null initially
+     */
     public LinkedList() {
         this.head = null;
         this.tail = null;
@@ -19,7 +30,7 @@ public class LinkedList {
     
     /**
      * Adds the element at front
-     * @param newNode
+     * @param newNode new element
      */
     public void add(INode newNode) {
         if(this.tail == null) {
@@ -36,7 +47,7 @@ public class LinkedList {
     
     /**
      * Adds element at the end (append)
-     * @param newNode
+     * @param newNode new element
      */
     public void append(INode newNode) {
         if(this.head == null) {
@@ -47,10 +58,23 @@ public class LinkedList {
         }else{
             this.tail.setNext(newNode);
             this.tail = newNode;
-            
         }
     }
     
+    /**
+     * adds element in between two existing nodes
+     * @param previousNode node at which the new element to be added
+     * @param newNode new element
+     */
+    public void insert(INode previousNode, INode newNode) {
+        INode tempNode = previousNode.getNext();
+        previousNode.setNext(newNode);
+        newNode.setNext(tempNode);
+    }
+    
+    /**
+     * Prints all the nodes in sequence
+     */
     public void printNodes(){
         StringBuffer availableNodes = new StringBuffer("Nodes : ");
         INode tempNode = head;

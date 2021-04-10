@@ -43,4 +43,18 @@ public class GenericLinkedListSimulatorTest {
                 LinkedList.getHead().getNext().equals(integerNode2) &&
                 LinkedList.getTail().equals(integerNode3));
     }
+    
+    @Test
+    public void givenElementShouldBeInsertedBetweenTwoElementsPresent_shouldPassTheTest() {
+        Node<Integer> integerNode1 = new Node<Integer>(56);
+        Node<Integer> integerNode2 = new Node<Integer>(30);
+        Node<Integer> integerNode3 = new Node<Integer>(70);
+        LinkedList linkedList = new LinkedList();
+        linkedList.add(integerNode1);
+        linkedList.append(integerNode3);
+        linkedList.insert(integerNode1,integerNode2);
+        Assert.assertTrue(LinkedList.getHead().equals(integerNode1) &&
+                LinkedList.getHead().getNext().equals(integerNode2) &&
+                LinkedList.getTail().equals(integerNode3));
+    }
 }
