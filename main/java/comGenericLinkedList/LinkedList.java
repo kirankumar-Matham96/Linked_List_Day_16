@@ -88,4 +88,12 @@ public class LinkedList {
         availableNodes.append(tempNode.getKey());
         System.out.println(availableNodes);
     }
+    
+    /**
+     * removes the first element from the list
+     */
+    public void pop() {
+        INode tempNode = this.head;
+        this.head = head.getNext();
+    }
 }
