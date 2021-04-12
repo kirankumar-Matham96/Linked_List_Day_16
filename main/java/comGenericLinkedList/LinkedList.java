@@ -81,7 +81,7 @@ public class LinkedList {
     /**
      * removes the first element from the list
      */
-    public void pop() {
+    public void popFirst() {
         INode tempNode = this.head;
         this.head = head.getNext();
     }
@@ -121,7 +121,8 @@ public class LinkedList {
     
     /**
      * Search node by value and inserts new node
-     * @param valueToFind key value to find respective node
+     *
+     * @param valueToFind    key value to find respective node
      * @param valueToAddNext new node to insert
      */
     public void searchByKeyInserts(Integer valueToFind, INode<Integer> valueToAddNext) {
@@ -137,8 +138,42 @@ public class LinkedList {
             }
             tempNode = tempNode.getNext();
         }
-        if(found){
+        if(found) {
             System.out.println("Not found!");
+        }
+    }
+    
+    /**
+     * finds the size of list
+     *
+     * @return size
+     */
+    public int size() {
+        int size = 1;
+        
+        INode tempNode = head;
+        try {
+            while(!tempNode.getNext().equals(null)) {
+                size++;
+                tempNode = tempNode.getNext();
+            }
+        } catch(NullPointerException nullException) {
+        }
+        return size;
+    }
+    
+    public void searchByValueAndDelete(Integer valueToDelete) {
+        if(head == null) {
+            System.out.println("List is empty!");
+        } else {
+            INode tempNode = head;
+            while(tempNode.getNext() != null) {
+                if(tempNode.getNext().getKey().equals(valueToDelete)) {
+                    tempNode.setNext(tempNode.getNext().getNext());
+                    break;
+                }
+                tempNode = tempNode.getNext();
+            }
         }
     }
     

@@ -61,7 +61,7 @@ public class GenericLinkedListSimulatorTest {
         linkedList.append(integerNode1);
         linkedList.append(integerNode2);
         linkedList.append(integerNode3);
-        linkedList.pop();
+        linkedList.popFirst();
         Assert.assertTrue(LinkedList.getHead().equals(integerNode2) && LinkedList.getTail().equals(integerNode3));
     }
     
@@ -102,5 +102,35 @@ public class GenericLinkedListSimulatorTest {
         linkedList.append(integerNode3);
         linkedList.searchByKeyInserts(30, integerNode4);
         Assert.assertTrue(LinkedList.getHead().equals(integerNode1) && LinkedList.getHead().getNext().equals(integerNode2) && LinkedList.getHead().getNext().getNext().equals(integerNode4) && LinkedList.getTail().equals(integerNode3));
+    }
+    
+    @Test
+    public void size() {
+        Node<Integer> integerNode1 = new Node<>(56);
+        Node<Integer> integerNode2 = new Node<>(30);
+        Node<Integer> integerNode3 = new Node<>(70);
+        Node<Integer> integerNode4 = new Node<>(40);
+        LinkedList linkedList = new LinkedList();
+        linkedList.append(integerNode1);
+        linkedList.append(integerNode2);
+        linkedList.append(integerNode3);
+        linkedList.append(integerNode4);
+        Assert.assertEquals(4,linkedList.size());
+    }
+    
+    @Test
+    public void searchGivenValue_deleteRespectiveNode_returnsSize() {
+        Node<Integer> integerNode1 = new Node<>(56);
+        Node<Integer> integerNode2 = new Node<>(30);
+        Node<Integer> integerNode3 = new Node<>(70);
+        Node<Integer> integerNode4 = new Node<>(40);
+        LinkedList linkedList = new LinkedList();
+        linkedList.append(integerNode1);
+        linkedList.append(integerNode2);
+        linkedList.append(integerNode4);
+        linkedList.append(integerNode3);
+        Assert.assertEquals(4,linkedList.size());
+        linkedList.searchByValueAndDelete(40);
+        Assert.assertEquals(3,linkedList.size());
     }
 }
