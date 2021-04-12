@@ -75,6 +75,7 @@ public class LinkedList {
         INode tempNode = previousNode.getNext();
         previousNode.setNext(newNode);
         newNode.setNext(tempNode);
+        printNodes();
     }
     
     /**
@@ -97,23 +98,6 @@ public class LinkedList {
     }
     
     /**
-     * Prints all the nodes in sequence
-     */
-    public void printNodes() {
-        StringBuffer availableNodes = new StringBuffer("Nodes : ");
-        INode tempNode = head;
-        while(tempNode.getNext() != null) {
-            availableNodes.append(tempNode.getKey());
-            if(!tempNode.equals(tail)) {
-                availableNodes.append(" points to ");
-            }
-            tempNode = tempNode.getNext();
-        }
-        availableNodes.append(tempNode.getKey());
-        System.out.println(availableNodes);
-    }
-    
-    /**
      * Searches value in the list
      *
      * @param keyValue value to search
@@ -133,5 +117,45 @@ public class LinkedList {
         }
         System.out.println("Not found!");
         return false;
+    }
+    
+    /**
+     * Search node by value and inserts new node
+     * @param valueToFind key value to find respective node
+     * @param valueToAddNext new node to insert
+     */
+    public void searchByKeyInserts(Integer valueToFind, INode<Integer> valueToAddNext) {
+        INode tempNode = head;
+        boolean found = true;
+        while(!tempNode.getNext().equals(null)) {
+            if(tempNode.getKey().equals(valueToFind)) {
+                INode nodeTemp = tempNode.getNext();
+                tempNode.setNext(valueToAddNext);
+                valueToAddNext.setNext(nodeTemp);
+                found = false;
+                break;
+            }
+            tempNode = tempNode.getNext();
+        }
+        if(found){
+            System.out.println("Not found!");
+        }
+    }
+    
+    /**
+     * Prints all the nodes in sequence
+     */
+    public void printNodes() {
+        StringBuffer availableNodes = new StringBuffer("Nodes : ");
+        INode tempNode = head;
+        while(tempNode.getNext() != null) {
+            availableNodes.append(tempNode.getKey());
+            if(!tempNode.equals(tail)) {
+                availableNodes.append(" -> ");
+            }
+            tempNode = tempNode.getNext();
+        }
+        availableNodes.append(tempNode.getKey());
+        System.out.println(availableNodes);
     }
 }
